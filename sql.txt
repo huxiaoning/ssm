@@ -1,0 +1,7 @@
+CREATE TABLE t_staff(
+    id CHAR(32) NOT NULL   COMMENT '主键 主键' ,
+    name VARCHAR(128)    COMMENT '员工姓名 员工姓名' ,
+    age INT    COMMENT '年龄 年龄' ,
+    sex TINYINT    COMMENT '性别 性别' ,
+    PRIMARY KEY (id)
+) COMMENT = '员工表 员工表';

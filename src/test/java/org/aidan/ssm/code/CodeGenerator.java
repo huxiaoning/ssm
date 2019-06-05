@@ -51,7 +51,7 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://127.0.0.0:3306/ssm?useUnicode=true&useSSL=false&characterEncoding=utf8");
+        dsc.setUrl("jdbc:mysql://127.0.0.1:3307/ssm?useUnicode=true&useSSL=false&characterEncoding=utf8");
         // dsc.setSchemaName("public");
         dsc.setDriverName("com.mysql.jdbc.Driver");
         dsc.setUsername("root");
@@ -61,7 +61,7 @@ public class CodeGenerator {
         // 包配置
         PackageConfig pc = new PackageConfig();
         pc.setModuleName("");
-        pc.setParent("com.qdreamer.smallprogramrecord");
+        pc.setParent("org.aidan.ssm");
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -121,7 +121,7 @@ public class CodeGenerator {
 //        strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
 //        strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");
-        strategy.setInclude(new String[]{"t_user"});
+        strategy.setInclude(new String[]{"t_staff"});
 //        strategy.setSuperEntityColumns("id");
 //        strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(new String[]{"t_"});
