@@ -1,12 +1,13 @@
 package org.aidan.ssm.controller;
 
 
+import org.aidan.ssm.entity.Staff;
+import org.aidan.ssm.service.StaffService;
 import org.aidan.ssm.vo.OptResult;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.HashMap;
 
 /**
  * <p>
@@ -20,11 +21,18 @@ import java.util.HashMap;
 @RequestMapping("/staff")
 public class StaffController {
 
+    @Autowired
+    private StaffService staffService;
+
     @GetMapping
     public OptResult hello() {
-        return OptResult.ok("Hello", new HashMap<String, String>() {{
-            put("a", "1");
-        }});
+
+        Staff staff = new Staff();
+        staff.setName("111");
+        staff.setAge(18);
+        staff.setSex(1);
+        staffService.save(staff);
+        return OptResult.ok("Hello", staff);
     }
 }
 
