@@ -1,6 +1,9 @@
 package org.aidan.ssm.controller;
 
 
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import org.aidan.ssm.entity.Staff;
 import org.aidan.ssm.service.StaffService;
 import org.aidan.ssm.vo.OptResult;
@@ -25,7 +28,11 @@ public class StaffController {
     private StaffService staffService;
 
     @GetMapping
-    public OptResult hello() {
+    @ApiOperation(value = "测试接口", notes = "测试接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "body", value = "名称", name = "name", dataType = "String")
+    })
+    public OptResult hello(String name) {
 
         Staff staff = new Staff();
         staff.setName("111");
