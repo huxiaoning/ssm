@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.extension.plugins.PerformanceInterceptor;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
 import org.aidan.ssm.rwdb.DynamicDataSource;
+import org.aidan.ssm.rwdb.DynamicPlugin;
 import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.type.JdbcType;
@@ -27,6 +28,12 @@ public class MyBatiesPlusConfiguration {
         // 开启 PageHelper 的支持
         // paginationInterceptor.setL(true);
         return paginationInterceptor;
+    }
+
+    @Bean
+    public DynamicPlugin dynamicPlugin() {
+        DynamicPlugin dynamicPlugin = new DynamicPlugin();
+        return dynamicPlugin;
     }
 
     /**
@@ -53,8 +60,12 @@ public class MyBatiesPlusConfiguration {
         configuration.setMapUnderscoreToCamelCase(true);
         configuration.setCacheEnabled(false);
         sqlSessionFactory.setConfiguration(configuration);
-        sqlSessionFactory.setPlugins(new Interceptor[]{ //PerformanceInterceptor(),OptimisticLockerInterceptor()
-                paginationInterceptor() //添加分页功能
+        sqlSessionFactory.setPlugins(new Interceptor[]{
+                //PerformanceInterceptor(),OptimisticLockerInterceptor()
+                //添加分页功能
+                paginationInterceptor(),
+                dynamicPlugin()
+
         });
         //sqlSessionFactory.setGlobalConfig(globalConfiguration());
         return sqlSessionFactory.getObject();
