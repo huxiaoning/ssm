@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * <p>
  * 员工表 员工表 前端控制器
@@ -30,7 +32,7 @@ public class StaffController {
     @GetMapping
     @ApiOperation(value = "测试接口", notes = "测试接口")
     @ApiImplicitParams({
-            @ApiImplicitParam(paramType = "body", value = "名称", name = "name", dataType = "String")
+            @ApiImplicitParam(paramType = "query", value = "名称", name = "name", dataType = "String")
     })
     public OptResult hello(String name) {
 
@@ -40,6 +42,18 @@ public class StaffController {
         staff.setSex(1);
         staffService.save(staff);
         return OptResult.ok("Hello", staff);
+    }
+
+
+    @GetMapping("/list")
+    @ApiOperation(value = "测试接口", notes = "测试接口")
+    @ApiImplicitParams({
+            @ApiImplicitParam(paramType = "body", value = "名称", name = "name", dataType = "String")
+    })
+    public OptResult list(String name) {
+
+        List<Staff> list = staffService.list();
+        return OptResult.ok("Hello", list);
     }
 }
 
