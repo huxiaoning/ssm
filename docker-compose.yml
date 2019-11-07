@@ -9,8 +9,6 @@ services:
     depends_on:
       - mysql
     restart: always
-    networks:
-      - my-net
 
 
   mysql:
@@ -20,10 +18,5 @@ services:
     volumes:
       - /Volume/mysql/data:/var/lib/mysql
     restart: always
-    networks:
-      - my-net
     environment:
       MYSQL_ROOT_PASSWORD: P2ssw0rd
-
-networks:
-  my-net
