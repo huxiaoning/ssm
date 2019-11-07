@@ -19,7 +19,7 @@ services:
     expose:
       - 3306
     volumes:
-      - /Volume/mysql/data: /var/lib/mysql
+      - /Volume/mysql/data:/var/lib/mysql
     restart: always
     network_mode: "bridge"
     networks:
