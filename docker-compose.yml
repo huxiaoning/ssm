@@ -10,7 +10,8 @@ services:
       - mysql
     restart: always
     network_mode: "bridge"
-    networks: my-net
+    networks:
+      - my-net
 
 
   mysql:
@@ -21,6 +22,7 @@ services:
       - /Volume/mysql/data: /var/lib/mysql
     restart: always
     network_mode: "bridge"
-    networks: my-net
+    networks:
+      - my-net
     environment:
       MYSQL_ROOT_PASSWORD: P2ssw0rd
