@@ -24,3 +24,6 @@ services:
       - my-net
     environment:
       MYSQL_ROOT_PASSWORD: P2ssw0rd
+
+networks:
+  my-net
