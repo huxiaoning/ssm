@@ -9,7 +9,6 @@ services:
     depends_on:
       - mysql
     restart: always
-    network_mode: "bridge"
     networks:
       - my-net
 
@@ -21,7 +20,6 @@ services:
     volumes:
       - /Volume/mysql/data:/var/lib/mysql
     restart: always
-    network_mode: "bridge"
     networks:
       - my-net
     environment:
