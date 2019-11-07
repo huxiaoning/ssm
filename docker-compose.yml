@@ -1,0 +1,26 @@
+version: '3'
+services:
+
+  ssm:
+    build: .
+    image: ssm:1.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    restart: always
+    network_mode: "bridge"
+    networks: my-net
+
+
+  mysql:
+    image: "mysql:5.7.28"
+    expose:
+      - 3306
+    volumes:
+      - /Volume/mysql/data: /var/lib/mysql
+    restart: always
+    network_mode: "bridge"
+    networks: my-net
+    environment:
+      MYSQL_ROOT_PASSWORD: P2ssw0rd
